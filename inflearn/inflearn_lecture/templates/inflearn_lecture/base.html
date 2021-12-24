@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inflearn_clonecoding</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- 합쳐지고 최소화된 최신 CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+        <!-- 부가적인 테마 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+        <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #main{
+            width: 100%;
+            height: 40vh;
+            background-image: url('https://cdn.inflearn.com/public/files/pages/16180410-868b-405b-8268-6fc3e523ef87/blog.png');
+        }
+
+        nav{
+            width: 100%;
+            height: 70px;
+            background-color: white;
+            line-height: 80px;
+        }
+
+        nav ul {
+            float: right;
+        }
+
+        nav ul a {
+            color: green;
+        }
+
+        nav ul li{
+            margin-right: 15px;
+            list-style-type: none;
+            display: inline-block;
+        }
+
+        .content{
+            padding: 50px;
+        }
+    </style>
+
+</head>
+<body>   
+    <div id='main'>
+        <nav>
+            <a href="/">
+                <img src='https://cdn.inflearn.com/public/files/pages/da35da48-52a5-4ec6-b8d3-0389a47610ec/logo1.png' width="200">
+            </a>
+            <ul>
+                <a href="/lecture_list"><li>강의보기</li></a>
+                {% if user.is_authenticated %}
+                    <a href="/logout"><li>로그아웃</li></a>
+                    <a href="/create_lecture"><li>강의 만들기</li></a>
+                    <a href="/my_lecture"><li>내 강의 보기</li></a>
+                {% else %}
+                    <a href="/login"><li>로그인</li></a>
+                    <a href="/join"><li>회원가입</li></a>
+                {% endif %}  
+            </ul>
+        </nav>
+    </div>
+    <div class="content">
+    {% block content %}
+    {% endblock %}
+    </div>
+</body>
+</html>
